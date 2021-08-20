@@ -10,6 +10,8 @@
     (for-each send-thread '(1 2 3 4))
     (recv-thread thrd)))
 
+#| This is a first-class comment |#
+
 (doc foo)
 #|
 
