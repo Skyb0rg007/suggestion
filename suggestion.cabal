@@ -25,7 +25,10 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      SExpr.Parse
+      SExpr.Print
+      SExpr.Types
+      Suggestion.Syntax
   other-modules:
       Paths_suggestion
   hs-source-dirs:
@@ -37,7 +40,9 @@ library
       base >=4.7 && <5
     , bytestring
     , containers
+    , megaparsec
     , mtl
+    , recursion-schemes
     , srcloc
     , text
     , transformers
@@ -54,7 +59,9 @@ executable suggestion-exe
       base >=4.7 && <5
     , bytestring
     , containers
+    , megaparsec
     , mtl
+    , recursion-schemes
     , srcloc
     , suggestion
     , text
@@ -73,7 +80,9 @@ test-suite suggestion-test
       base >=4.7 && <5
     , bytestring
     , containers
+    , megaparsec
     , mtl
+    , recursion-schemes
     , srcloc
     , suggestion
     , text
