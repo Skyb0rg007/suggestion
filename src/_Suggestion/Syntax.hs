@@ -4,6 +4,7 @@ module Suggestion.Syntax
     ( module Suggestion.Syntax
     ) where
 
+import qualified Data.Map.Strict as Map
 import           Control.Monad (void)
 import           Data.Functor.Identity (runIdentity)
 import           SExpr.Types
@@ -34,8 +35,10 @@ type Parser = Parsec Void Text
 atomReader :: SExprParser Parser Atom
 atomReader = SExprParser
     { parseAtom = parseString <|> parseBool <|> parseNum <|> parseSym <|> parseComment
-    , readerMap = mempty
-    , comment   = Nothing
+    , readerMap = Map.fromList
+        [ ('\'', fmap (\e -> SList [SAtom (ASymbol "quote"), e]))
+        ]
+    , comment = Nothing
     }
     where
         parseString = label "string" $ fmap (AString . Text.pack) $

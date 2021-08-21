@@ -26,6 +26,9 @@ dependencies:
 - transformers
 - megaparsec
 - recursion-schemes
+- vector
+- cmark
+- unordered-containers
 
 library:
   source-dirs: src
